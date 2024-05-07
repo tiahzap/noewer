@@ -1,0 +1,19 @@
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
+import time
+
+chrome_options = Options()
+chrome_options.add_argument('--headless')
+driver = webdriver.Chrome(options=chrome_options)
+
+# Buka URL yang diinginkan
+driver.get("https://ping.eu")
+time.sleep(5)
+
+# Temukan elemen yang Anda inginkan
+element = driver.find_element(By.XPATH, "/html/body/table/tbody/tr[2]/td/table/tbody/tr/td")
+
+# Ambil teks dari elemen
+text = element.text
+print("Teks yang diambil:", text)
