@@ -1,0 +1,17 @@
+--- step1.yml   2021-04-23 00:01:00 +0000
++++ step2.yml   2021-04-23 00:02:00 +0000
+@@ -15,11 +15,10 @@
+     - name: Prepare Selenium
+       # https://github.com/marketplace/actions/setup-chromedriver
+       uses: nanasess/setup-chromedriver@master
+-    - name: Launch browser
++    - name: Start XVFB
+       run: |
+-        google-chrome --version
+-        export DISPLAY=:99
+-        chromedriver --url-base=/wd/hub &
+         sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 & # optional, disables headless mode
+     - name: Run tests
+       run: pipenv run python manage.py test functional_tests.tests.test_selenium.test_exams -v 2
++      env:
++        DISPLAY: :99
