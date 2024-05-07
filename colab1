@@ -17,3 +17,5 @@ element = driver.find_element(By.XPATH, "/html/body/table/tbody/tr[2]/td/table/t
 # Ambil teks dari elemen
 text = element.text
 print("Teks yang diambil:", text)
+
+
